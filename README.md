@@ -1,4 +1,4 @@
-# Taxi Service
+# ![Tux, the Linux mascot](/logo.webp) Taxi Service
 
 The Taxi Service is a project that simulates a taxi service. 
 Users can add and delete car models, cars, and drivers. 
@@ -17,12 +17,38 @@ view all cars belonging to the current driver, and authenticate themselves.
 <li>View all cars, drivers, manufacturers</li>
 </ul>
 
+## Getting Started
+
+<ul>
+<li>Clone the project repository to your local machine</li>
+<li>Run the SQL script located in <code>src/main/resources/init_db.sql</code> to initialize the database</li>
+<li>Replace the values of the <code>URL</code>, <code>USERNAME</code>, <code>PASSWORD</code> and <code>JDBC_DRIVER</code> properties 
+with the appropriate values for your database setup</li>
+<li>Build the project using Maven: <code>mvn clean install</code></li>
+<li>Deploy the generated WAR file to servlet container such as Tomcat</li>
+</ul>
+
 ## Structure
 
 <ul>
 <li>controller: Servlets that handle HTTP requests and responses</li>
-<li>dao: Data Access Object interfaces and their implementations</li>
-<li>exception: Custom exceptions used in the project</li> 
+    <ul>
+        <li>LoginController - <code>POST /login</code> - authentication</li>
+        <li>LogoutController - <code>GET /logout</code> - invalidate current session</li>
+        <li>IndexController - <code>GET /</code> - show all corresponding pages</li>
+        <li>AddCarController - <code>POST /cars/add</code> - adds a new car</li>
+        <li>AddDriverToCarController - <code>POST /cars/drivers/add</code> - adds a driver to a certain car</li>
+        <li>DeleteCarController - <code>GET /cars/delete</code> - deletes car</li>
+        <li>GetAllCarsController - <code>GET /cars</code> - views all cars</li>
+        <li>AddDriverController - <code>POST /drivers/add</code> - adds a driver</li>
+        <li>DeleteDriverController - <code>GET /drivers/delete</code> - deletes driver</li>
+        <li>GetAllDriversController - <code>GET /drivers</code> - views all drivers</li>
+        <li>GetMyCurrentCarsController - <code>GET /drivers/cars</code> - views all cars for the current driver</li>
+        <li>AddManufacturersController - <code>POST /manufacturers/add</code> - adds new manufacturer</li>
+        <li>DeleteManufacturerController - <code>GET /manufacturers/delete</code> - deletes manufacturer</li>
+        <li>GetAllManufacturersController - <code>GET /manufacturers</code> - views all manufacturers</li>
+    </ul>
+<li>dao: Data Access Object interfaces and their implementations</li> 
 <li>filter: Servlet Filters used to intercept requests and responses</li>
 <li>model: Plain Old Java Objects (POJOs) that represent data</li>
 <li>service: Service interfaces and their implementations that perform business logic</li>
@@ -38,21 +64,12 @@ and include css files (that contains CSS files used in the application)</li>
 ## Used technologies:
 
 <ul>
-<li>Java 
-<li>Java Servlets 
-<li>SQL 
-<li>Maven
-</ul>
-
-## Getting Started
-
-<ul>
-<li>Clone the project repository to your local machine</li>
-<li>Run the SQL script located in src/main/resources/init_db.sql to initialize the database</li>
-<li>Replace the values of the URL, USERNAME, PASSWORD and JDBC_DRIVER properties 
-with the appropriate values for your database setup</li>
-<li>Build the project using Maven: mvn clean install</li>
-<li>Deploy the generated WAR file to servlet container such as Tomcat</li>
+<li>Java <code>v.17.0.5</code></li>
+<li>Maven <code>v.3.8.6</code></li>
+<li>JDBC <code>v.4.2</code></li>
+<li>MySql <code>v.8.0.24</code></li>
+<li>Java Servlets <code>v.4.0.1</code></li>
+<li>Tomcat <code>v.9.0.73</code></li>
 </ul>
 
 ## Authors
